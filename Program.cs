@@ -59,7 +59,7 @@ namespace UIAutomationConsole
             string switchBranchResult = switchBranchProcess.StandardOutput.ReadToEnd();
             Console.WriteLine(switchBranchResult);
 
-            var addEnvironmentMsBuildCommand = "setx PATH \"%PATH%;C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\MSBuild\\Current\\Bin\"";
+            var addEnvironmentMsBuildCommand = "setx PATH \"%PATH%;C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\MSBuild\\Current\\Bin\\\"";
             System.Diagnostics.ProcessStartInfo addEnvironmentMsBuildProcStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + addEnvironmentMsBuildCommand);
             addEnvironmentMsBuildProcStartInfo.RedirectStandardOutput = true;
             addEnvironmentMsBuildProcStartInfo.UseShellExecute = false;
