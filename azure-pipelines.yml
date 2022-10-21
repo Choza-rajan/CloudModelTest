@@ -6,7 +6,7 @@
 trigger:
 - main
 
-pool: SyncfusionLabMachine
+pool: XamarinTestingMachine
 
 variables:
   solution: '**/*.sln'
