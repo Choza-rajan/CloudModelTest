@@ -70,7 +70,7 @@ namespace UIAutomationConsole
             string addEnvironmentMsBuildResult = addEnvironmentMsBuildProcess.StandardOutput.ReadToEnd();
             Console.WriteLine(addEnvironmentMsBuildResult);
 
-            var addEnvironmentAndroidCommand = "setx PATH \"%PATH%;C:\\Program Files (x86)\\Android\android-sdk\\tools\\\"";
+            var addEnvironmentAndroidCommand = "setx PATH \"%PATH%;C:\\Program Files (x86)\\Android\\android-sdk\\tools\\\"";
             System.Diagnostics.ProcessStartInfo addEnvironmentAndroidProcStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + addEnvironmentAndroidCommand);
             addEnvironmentAndroidProcStartInfo.RedirectStandardOutput = true;
             addEnvironmentAndroidProcStartInfo.UseShellExecute = false;
