@@ -76,7 +76,7 @@ namespace UIAutomationConsole
             addEnvironmentAndroidProcStartInfo.UseShellExecute = false;
 
             Process addEnvironmentAndroidProcess = new Process();
-            addEnvironmentAndroidProcess.StartInfo = addEnvironmentMsBuildProcStartInfo;
+            addEnvironmentAndroidProcess.StartInfo = addEnvironmentAndroidProcStartInfo;
             addEnvironmentAndroidProcess.Start();
             string addEnvironmentAndroidResult = addEnvironmentAndroidProcess.StandardOutput.ReadToEnd();
             Console.WriteLine(addEnvironmentAndroidResult);
