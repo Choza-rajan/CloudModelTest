@@ -11,17 +11,23 @@ namespace UIAutomationConsole
         {
             Console.WriteLine("Starting the Emulator");
 
-            //var openEmulatorCommand = "emulator -avd pixel_3_xl_r_11_0_-_api_30";
-            //System.Diagnostics.ProcessStartInfo emulatorProcessStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + openEmulatorCommand);
-            //emulatorProcessStartInfo.RedirectStandardOutput = true;
-            //emulatorProcessStartInfo.UseShellExecute = false;
-            //emulatorProcessStartInfo.WorkingDirectory = "C:\\Users\\ChozarajanPandiyaraj\\AppData\\Local\\Android\\Sdk\\emulator\\";
+            //new Thread(() =>
+            //{
+            //    Thread.CurrentThread.IsBackground = true;
+            //    /* run your code here */
+            //    Console.WriteLine("Hello, world");
+            //    var openEmulatorCommand = "emulator -avd pixel_3_xl_r_11_0_-_api_30";
+            //    System.Diagnostics.ProcessStartInfo emulatorProcessStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + openEmulatorCommand);
+            //    emulatorProcessStartInfo.RedirectStandardOutput = true;
+            //    emulatorProcessStartInfo.UseShellExecute = false;
+            //    emulatorProcessStartInfo.WorkingDirectory = "C:\\Users\\ChozarajanPandiyaraj\\AppData\\Local\\Android\\Sdk\\emulator\\";
 
-            //Process emulatorProcess = new Process();
-            //emulatorProcess.StartInfo = emulatorProcessStartInfo;
-            //emulatorProcess.Start();
-            //string emulatorResult = emulatorProcess.StandardOutput.ReadToEnd();
-            //Console.WriteLine(emulatorResult);
+            //    Process emulatorProcess = new Process();
+            //    emulatorProcess.StartInfo = emulatorProcessStartInfo;
+            //    emulatorProcess.Start();
+            //    string emulatorResult = emulatorProcess.StandardOutput.ReadToEnd();
+            //    Console.WriteLine(emulatorResult);
+            //}).Start();
 
 
             var newFolderCommand = "mkdir D:\\Automation\\";
@@ -35,7 +41,7 @@ namespace UIAutomationConsole
             string newFolderResult = newFolderProcess.StandardOutput.ReadToEnd();
             Console.WriteLine(newFolderResult);
 
-            var sourceClonecommand = "git clone https://github.com/essential-studio/sfrating-xamarin-tests.git";
+            var sourceClonecommand = "git clone https://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@github.com/essential-studio/sfrating-xamarin-tests.git";
             System.Diagnostics.ProcessStartInfo sourceCloneProcStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + sourceClonecommand);
             sourceCloneProcStartInfo.RedirectStandardOutput = true;
             sourceCloneProcStartInfo.UseShellExecute = false;
@@ -59,7 +65,7 @@ namespace UIAutomationConsole
             string switchBranchResult = switchBranchProcess.StandardOutput.ReadToEnd();
             Console.WriteLine(switchBranchResult);
 
-            var addEnvironmentMsBuildCommand = "setx PATH \"%PATH%;C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\MSBuild\\Current\\Bin\\\"";
+            var addEnvironmentMsBuildCommand = "setx PATH \"%PATH%;C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\MSBuild\\Current\\Bin\"";
             System.Diagnostics.ProcessStartInfo addEnvironmentMsBuildProcStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + addEnvironmentMsBuildCommand);
             addEnvironmentMsBuildProcStartInfo.RedirectStandardOutput = true;
             addEnvironmentMsBuildProcStartInfo.UseShellExecute = false;
@@ -70,7 +76,7 @@ namespace UIAutomationConsole
             string addEnvironmentMsBuildResult = addEnvironmentMsBuildProcess.StandardOutput.ReadToEnd();
             Console.WriteLine(addEnvironmentMsBuildResult);
 
-            var addEnvironmentAndroidCommand = "setx PATH \"%PATH%;C:\\Program Files (x86)\\Android\\android-sdk\\tools\\\"";
+            var addEnvironmentAndroidCommand = "setx PATH \"%PATH%;C:\\Program Files (x86)\\Android\\android-sdk\\tools\"";
             System.Diagnostics.ProcessStartInfo addEnvironmentAndroidProcStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + addEnvironmentAndroidCommand);
             addEnvironmentAndroidProcStartInfo.RedirectStandardOutput = true;
             addEnvironmentAndroidProcStartInfo.UseShellExecute = false;
