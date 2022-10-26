@@ -41,7 +41,7 @@ namespace UIAutomationConsole
             string newFolderResult = newFolderProcess.StandardOutput.ReadToEnd();
             Console.WriteLine(newFolderResult);
 
-            var sourceClonecommand = "git clone https://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@github.com/essential-studio/sfrating-xamarin-tests.git";
+            var sourceClonecommand = "git clone https://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@github.com/essential-studio/sfrating-xamarin-tests.git";
             System.Diagnostics.ProcessStartInfo sourceCloneProcStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + sourceClonecommand);
             sourceCloneProcStartInfo.RedirectStandardOutput = true;
             sourceCloneProcStartInfo.UseShellExecute = false;
