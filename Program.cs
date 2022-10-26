@@ -65,44 +65,11 @@ namespace UIAutomationConsole
             string switchBranchResult = switchBranchProcess.StandardOutput.ReadToEnd();
             Console.WriteLine(switchBranchResult);
 
-            var addEnvironmentMsBuildCommand = "setx PATH \"%PATH%;C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\MSBuild\\Current\\Bin\"";
-            System.Diagnostics.ProcessStartInfo addEnvironmentMsBuildProcStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + addEnvironmentMsBuildCommand);
-            addEnvironmentMsBuildProcStartInfo.RedirectStandardOutput = true;
-            addEnvironmentMsBuildProcStartInfo.UseShellExecute = false;
-
-            Process addEnvironmentMsBuildProcess = new Process();
-            addEnvironmentMsBuildProcess.StartInfo = addEnvironmentMsBuildProcStartInfo;
-            addEnvironmentMsBuildProcess.Start();
-            string addEnvironmentMsBuildResult = addEnvironmentMsBuildProcess.StandardOutput.ReadToEnd();
-            Console.WriteLine(addEnvironmentMsBuildResult);
-
-            var addEnvironmentAndroidCommand = "setx PATH \"%PATH%;C:\\Program Files (x86)\\Android\\android-sdk\\tools\"";
-            System.Diagnostics.ProcessStartInfo addEnvironmentAndroidProcStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + addEnvironmentAndroidCommand);
-            addEnvironmentAndroidProcStartInfo.RedirectStandardOutput = true;
-            addEnvironmentAndroidProcStartInfo.UseShellExecute = false;
-
-            Process addEnvironmentAndroidProcess = new Process();
-            addEnvironmentAndroidProcess.StartInfo = addEnvironmentAndroidProcStartInfo;
-            addEnvironmentAndroidProcess.Start();
-            string addEnvironmentAndroidResult = addEnvironmentAndroidProcess.StandardOutput.ReadToEnd();
-            Console.WriteLine(addEnvironmentAndroidResult);
-
-            var restoreProjectCommand = "msbuild /t:restore";
-            System.Diagnostics.ProcessStartInfo restoreProjectProcStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + restoreProjectCommand);
-            restoreProjectProcStartInfo.RedirectStandardOutput = true;
-            restoreProjectProcStartInfo.UseShellExecute = false;
-            restoreProjectProcStartInfo.WorkingDirectory = "D:\\Automation\\sfrating-xamarin-tests\\UITest\\XForms\\SfRatingSample\\";
-
-            Process restoreProjectProcess = new Process();
-            restoreProjectProcess.StartInfo = restoreProjectProcStartInfo;
-            restoreProjectProcess.Start();
-            string restoreProjectResult = restoreProjectProcess.StandardOutput.ReadToEnd();
-            Console.WriteLine(restoreProjectResult);
-
             Console.WriteLine("Compilation Start");
-
+            var addEnvironmentMsBuildCommand = "set PATH=%PATH%;C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\MSBuild\\Current\\Bin";
+            var restoreProjectCommand = "msbuild /t:restore";
             var compileSourceCommand = "msbuild SfRatingSample.Android\\SfRatingSample.Android.csproj /verbosity:normal /t:Rebuild /t:PackageForAndroid /t:SignAndroidPackage /p:Configuration=Release";
-            System.Diagnostics.ProcessStartInfo compileSourceProcStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + compileSourceCommand);
+            System.Diagnostics.ProcessStartInfo compileSourceProcStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + addEnvironmentMsBuildCommand + "&" + restoreProjectCommand + "&" + compileSourceCommand);
             compileSourceProcStartInfo.RedirectStandardOutput = true;
             compileSourceProcStartInfo.UseShellExecute = false;
             compileSourceProcStartInfo.WorkingDirectory = "D:\\Automation\\sfrating-xamarin-tests\\UITest\\XForms\\SfRatingSample\\";
@@ -114,8 +81,8 @@ namespace UIAutomationConsole
             Console.WriteLine(compileSourceResult);
 
             Console.WriteLine("Compile End");
-            Console.WriteLine("Publish Start");
 
+            Console.WriteLine("Publish Start");
             var publishAPKCommand = "adb install com.companyname.sfratingsample-Signed.apk";
             System.Diagnostics.ProcessStartInfo publishAPKProcStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + publishAPKCommand);
             publishAPKProcStartInfo.RedirectStandardOutput = true;
