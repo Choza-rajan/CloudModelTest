@@ -135,7 +135,19 @@ namespace UIAutomationConsole
             string publishAPKResult = publishAPKProcess.StandardOutput.ReadToEnd();
             Console.WriteLine(publishAPKResult);
 
-            Console.WriteLine("Install APK Process End");
+            Console.WriteLine("Script Compilation Start");
+
+            var compileScriptCommand = "msbuild SfRatingScripts.csproj /verbosity:normal /t:Rebuild /p:DefineConstants=Android /p:Configuration=Release";
+            System.Diagnostics.ProcessStartInfo compileScriptProcStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + addEnvironmentMsBuildCommand + "&" + restoreProjectCommand + "&" + compileScriptCommand);
+            compileScriptProcStartInfo.RedirectStandardOutput = true;
+            compileScriptProcStartInfo.UseShellExecute = false;
+            compileScriptProcStartInfo.WorkingDirectory = "D:\\Automation\\Test\\sfrating-xamarin-tests\\UITest\\XForms\\SfRatingScripts\\";
+
+            Process compileScriptProcess = new Process();
+            compileScriptProcess.StartInfo = compileScriptProcStartInfo;
+            compileScriptProcess.Start();
+            string compileScriptResult = compileScriptProcess.StandardOutput.ReadToEnd();
+            Console.WriteLine(compileScriptResult);
         }
     }
 }
