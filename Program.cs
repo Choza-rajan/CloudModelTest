@@ -21,7 +21,7 @@ namespace UIAutomationConsole
                 System.Diagnostics.ProcessStartInfo newFolderStartInfo1 = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + newFolderForTestCommand1);
                 newFolderStartInfo1.RedirectStandardOutput = true;
                 newFolderStartInfo1.UseShellExecute = false;
-				newFolderStartInfo1.WorkingDirectory = "C:\\Program Files (x86)\\Android\\android-sdk\\emulator";
+				newFolderStartInfo1.WorkingDirectory = "C:\\Program Files (x86)\\Android\\android-sdk\\emulator\\";
 
                 Process newFolderProcess1 = new Process();
                 newFolderProcess1.StartInfo = newFolderStartInfo1;
@@ -44,29 +44,29 @@ namespace UIAutomationConsole
                 //}).Start();
 
 
-                var newFolderForSourceCommand = "mkdir D:\\Automation\\Source";
-                var newFolderForTestCommand = "mkdir D:\\Automation\\Test";
-                System.Diagnostics.ProcessStartInfo newFolderStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + newFolderForSourceCommand + "&" + newFolderForTestCommand);
-                newFolderStartInfo.RedirectStandardOutput = true;
-                newFolderStartInfo.UseShellExecute = false;
+                //var newFolderForSourceCommand = "mkdir D:\\Automation\\Source";
+                //var newFolderForTestCommand = "mkdir D:\\Automation\\Test";
+                //System.Diagnostics.ProcessStartInfo newFolderStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + newFolderForSourceCommand + "&" + newFolderForTestCommand);
+                //newFolderStartInfo.RedirectStandardOutput = true;
+                //newFolderStartInfo.UseShellExecute = false;
 
-                Process newFolderProcess = new Process();
-                newFolderProcess.StartInfo = newFolderStartInfo;
-                newFolderProcess.Start();
-                string newFolderResult = newFolderProcess.StandardOutput.ReadToEnd();
-                Console.WriteLine(newFolderResult);
+                //Process newFolderProcess = new Process();
+                //newFolderProcess.StartInfo = newFolderStartInfo;
+                //newFolderProcess.Start();
+                //string newFolderResult = newFolderProcess.StandardOutput.ReadToEnd();
+                //Console.WriteLine(newFolderResult);
 
-                var testcommand = "git";
-                System.Diagnostics.ProcessStartInfo testProcStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + testcommand);
-                testProcStartInfo.RedirectStandardOutput = true;
-                testProcStartInfo.UseShellExecute = false;
-                testProcStartInfo.WorkingDirectory = "D:\\Automation\\Source";
+                //var testcommand = "git";
+                //System.Diagnostics.ProcessStartInfo testProcStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + testcommand);
+                //testProcStartInfo.RedirectStandardOutput = true;
+                //testProcStartInfo.UseShellExecute = false;
+                //testProcStartInfo.WorkingDirectory = "D:\\Automation\\Source";
 
-                Process testProcess = new Process();
-                testProcess.StartInfo = testProcStartInfo;
-                testProcess.Start();
-                string testResult = testProcess.StandardOutput.ReadToEnd();
-                Console.WriteLine(testResult);
+                //Process testProcess = new Process();
+                //testProcess.StartInfo = testProcStartInfo;
+                //testProcess.Start();
+                //string testResult = testProcess.StandardOutput.ReadToEnd();
+                //Console.WriteLine(testResult);
 
                 //var sourceClonecommand = "git clone https://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@github.com/essential-studio/sfrating-xamarin.git";
                 //System.Diagnostics.ProcessStartInfo sourceCloneProcStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + sourceClonecommand);
