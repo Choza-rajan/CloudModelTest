@@ -44,18 +44,6 @@ namespace UIAutomationConsole
                 string newFolderResult = newFolderProcess.StandardOutput.ReadToEnd();
                 Console.WriteLine(newFolderResult);
 
-                var testcommand = "git";
-                System.Diagnostics.ProcessStartInfo testProcStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + testcommand);
-                testProcStartInfo.RedirectStandardOutput = true;
-                testProcStartInfo.UseShellExecute = false;
-                testProcStartInfo.WorkingDirectory = "D:\\Automation\\Source";
-
-                Process testProcess = new Process();
-                testProcess.StartInfo = testProcStartInfo;
-                testProcess.Start();
-                string testResult = testProcess.StandardOutput.ReadToEnd();
-                Console.WriteLine(testResult);
-
                 var sourceClonecommand = "git clone https://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@github.com/essential-studio/sfrating-xamarin.git";
                 System.Diagnostics.ProcessStartInfo sourceCloneProcStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + sourceClonecommand);
                 sourceCloneProcStartInfo.RedirectStandardOutput = true;
