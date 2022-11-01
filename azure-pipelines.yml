@@ -6,7 +6,7 @@
 trigger:
 - main
 
-pool: XamarinTestingMachine
+pool: Win11AgentPool
 
 variables:
   solution: '**/*.sln'
