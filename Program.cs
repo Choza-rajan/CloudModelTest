@@ -41,7 +41,7 @@ namespace UIAutomationConsole
             string newFolderResult = newFolderProcess.StandardOutput.ReadToEnd();
             Console.WriteLine(newFolderResult);
 
-            var sourceClonecommand = "git clone https://github.com/essential-studio/sfrating-xamarin.git";
+            var sourceClonecommand = "git clone git@github.com:essential-studio/sfrating-xamarin.git";
             System.Diagnostics.ProcessStartInfo sourceCloneProcStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + sourceClonecommand);
             sourceCloneProcStartInfo.RedirectStandardOutput = true;
             sourceCloneProcStartInfo.UseShellExecute = false;
@@ -80,7 +80,7 @@ namespace UIAutomationConsole
 
             Console.WriteLine("Source Compilation Ended");
 
-            var testSourceClonecommand = "git clone https://github.com/essential-studio/sfrating-xamarin-tests.git";
+            var testSourceClonecommand = "git clone git@github.com:essential-studio/sfrating-xamarin-tests.git";
             System.Diagnostics.ProcessStartInfo testSourceCloneProcStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + testSourceClonecommand);
             testSourceCloneProcStartInfo.RedirectStandardOutput = true;
             testSourceCloneProcStartInfo.UseShellExecute = false;
