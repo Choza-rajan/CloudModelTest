@@ -9,25 +9,24 @@ namespace UIAutomationConsole
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Starting the Emulator");
+            Console.WriteLine("Process Started");
 
-            //new Thread(() =>
-            //{
-            //    Thread.CurrentThread.IsBackground = true;
-            //    /* run your code here */
-            //    Console.WriteLine("Hello, world");
-            //    var openEmulatorCommand = "emulator -avd pixel_3_xl_r_11_0_-_api_30";
-            //    System.Diagnostics.ProcessStartInfo emulatorProcessStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + openEmulatorCommand);
-            //    emulatorProcessStartInfo.RedirectStandardOutput = true;
-            //    emulatorProcessStartInfo.UseShellExecute = false;
-            //    emulatorProcessStartInfo.WorkingDirectory = "C:\\Users\\ChozarajanPandiyaraj\\AppData\\Local\\Android\\Sdk\\emulator\\";
+            new Thread(() =>
+            {
+                Thread.CurrentThread.IsBackground = true;
+                Console.WriteLine("Starting the Emulator");
+                var openEmulatorCommand = "emulator -avd pixel_2_r_11_0_-_api_30";
+                System.Diagnostics.ProcessStartInfo emulatorProcessStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + openEmulatorCommand);
+                emulatorProcessStartInfo.RedirectStandardOutput = true;
+                emulatorProcessStartInfo.UseShellExecute = false;
+                emulatorProcessStartInfo.WorkingDirectory = "C:\\Program Files (x86)\\Android\\android-sdk\\emulator\\";
 
-            //    Process emulatorProcess = new Process();
-            //    emulatorProcess.StartInfo = emulatorProcessStartInfo;
-            //    emulatorProcess.Start();
-            //    string emulatorResult = emulatorProcess.StandardOutput.ReadToEnd();
-            //    Console.WriteLine(emulatorResult);
-            //}).Start();
+                Process emulatorProcess = new Process();
+                emulatorProcess.StartInfo = emulatorProcessStartInfo;
+                emulatorProcess.Start();
+                string emulatorResult = emulatorProcess.StandardOutput.ReadToEnd();
+                Console.WriteLine(emulatorResult);
+            }).Start();
 
 
             var newFolderForSourceCommand = "mkdir D:\\Automation\\Source";
@@ -66,8 +65,8 @@ namespace UIAutomationConsole
             string switchBranchResult = switchBranchProcess.StandardOutput.ReadToEnd();
             Console.WriteLine(switchBranchResult);
 
-            Console.WriteLine("Source Compilation Start");
-            var sourceCompileCommand = "powershell.exe -ExecutionPolicy ByPass -File build/build.ps1 -Script D:/Automation/Source/sfrating-xamarin/build/build.cake -Target build -OutputPath Assemblies -StudioVersion  20.3.1.1 -nugetserverurl http://nexus.syncfusion.com/repository/nuget-hosted/,https://api.nuget.org/v3/index.json";
+            Console.WriteLine("Source Compilation Started");
+            var sourceCompileCommand = "powershell.exe -ExecutionPolicy ByPass -File build/build.ps1 -Script D:/Automation/Source/sfrating-xamarin/build/build.cake -Target build -OutputPath Assemblies -StudioVersion  20.3.1.1 -nugetserverurl https://nexus.syncfusion.com/repository/nuget-hosted/,https://api.nuget.org/v3/index.json";
             System.Diagnostics.ProcessStartInfo compileSourceProcStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + sourceCompileCommand);
             compileSourceProcStartInfo.RedirectStandardOutput = true;
             compileSourceProcStartInfo.UseShellExecute = false;
@@ -79,7 +78,7 @@ namespace UIAutomationConsole
             string compileSourceResult = compileSourceProcess.StandardOutput.ReadToEnd();
             Console.WriteLine(compileSourceResult);
 
-            Console.WriteLine("Source Compilation End");
+            Console.WriteLine("Source Compilation Ended");
 
             var testSourceClonecommand = "git clone https://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@github.com/essential-studio/sfrating-xamarin-tests.git";
             System.Diagnostics.ProcessStartInfo testSourceCloneProcStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + testSourceClonecommand);
@@ -105,8 +104,8 @@ namespace UIAutomationConsole
             string testSourceSwitchBranchResult = testSourceSwitchBranchProcess.StandardOutput.ReadToEnd();
             Console.WriteLine(testSourceSwitchBranchResult);
 
-            Console.WriteLine("Test Compilation Start");
-            var addEnvironmentMsBuildCommand = "set PATH=%PATH%;C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\BuildTools\\MSBuild\\Current\\Bin";
+            Console.WriteLine("Test Compilation Started");
+            var addEnvironmentMsBuildCommand = "set PATH=%PATH%;C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Professional\\MSBuild\\Current\\Bin";
             var restoreProjectCommand = "msbuild /t:restore";
             var compileTestSourceCommand = "msbuild SfRatingSample.Android\\SfRatingSample.Android.csproj /verbosity:normal /t:Rebuild /t:PackageForAndroid /t:SignAndroidPackage /p:Configuration=Release";
             System.Diagnostics.ProcessStartInfo compileTestSourceProcStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + addEnvironmentMsBuildCommand + "&" + restoreProjectCommand + "&" + compileTestSourceCommand);
@@ -120,11 +119,13 @@ namespace UIAutomationConsole
             string compileTestSourceResult = compileTestSourceProcess.StandardOutput.ReadToEnd();
             Console.WriteLine(compileTestSourceResult);
 
-            Console.WriteLine("Test Compilation End");
+            Console.WriteLine("Test Compilation Ended");
 
-            Console.WriteLine("Install APK Start");
+            Console.WriteLine("Install the APK Started");
+            var addEnvironmentAdbCommand = "set PATH=%PATH%;C:\\Program Files (x86)\\Android\\android-sdk\\platform-tools\\";
+            var adbDeviceCommand = "adb devices";
             var publishAPKCommand = "adb install com.companyname.sfratingsample-Signed.apk";
-            System.Diagnostics.ProcessStartInfo publishAPKProcStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + publishAPKCommand);
+            System.Diagnostics.ProcessStartInfo publishAPKProcStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + addEnvironmentAdbCommand + "&" + adbDeviceCommand + "&" + publishAPKCommand);
             publishAPKProcStartInfo.RedirectStandardOutput = true;
             publishAPKProcStartInfo.UseShellExecute = false;
             publishAPKProcStartInfo.WorkingDirectory = "D:\\Automation\\Test\\sfrating-xamarin-tests\\UITest\\XForms\\SfRatingSample\\SfRatingSample.Android\\bin\\Release\\";
@@ -135,7 +136,7 @@ namespace UIAutomationConsole
             string publishAPKResult = publishAPKProcess.StandardOutput.ReadToEnd();
             Console.WriteLine(publishAPKResult);
 
-            Console.WriteLine("Script Compilation Start");
+            Console.WriteLine("Script Compilation Started");
 
             var compileScriptCommand = "msbuild SfRatingScripts.csproj /verbosity:normal /t:Rebuild /p:DefineConstants=Android /p:Configuration=Release";
             System.Diagnostics.ProcessStartInfo compileScriptProcStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + addEnvironmentMsBuildCommand + "&" + restoreProjectCommand + "&" + compileScriptCommand);
@@ -148,6 +149,26 @@ namespace UIAutomationConsole
             compileScriptProcess.Start();
             string compileScriptResult = compileScriptProcess.StandardOutput.ReadToEnd();
             Console.WriteLine(compileScriptResult);
+
+            Console.WriteLine("Script Compilation Ended");
+
+            Console.WriteLine("Syncfusion NUnit Exe Started");
+
+            var startNUnitAutomationCommand = "Syncfusion.NUnit.exe D:\\Automation\\Test\\sfrating-xamarin-tests\\UITest\\XForms\\SfRatingScripts\\bin\\Release\\SfRatingScripts.dll";
+            System.Diagnostics.ProcessStartInfo startNUnitAutomationProcStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + startNUnitAutomationCommand);
+            startNUnitAutomationProcStartInfo.RedirectStandardOutput = true;
+            startNUnitAutomationProcStartInfo.UseShellExecute = false;
+            startNUnitAutomationProcStartInfo.WorkingDirectory = "C:\\Syncfusion_Utilities\\";
+
+            Process startNUnitAutomationProcess = new Process();
+            startNUnitAutomationProcess.StartInfo = startNUnitAutomationProcStartInfo;
+            startNUnitAutomationProcess.Start();
+            string startNUnitAutomationResult = startNUnitAutomationProcess.StandardOutput.ReadToEnd();
+            Console.WriteLine(startNUnitAutomationResult);
+
+            Console.WriteLine("Syncfusion NUnit Exe Completed");
+
+
         }
     }
 }
