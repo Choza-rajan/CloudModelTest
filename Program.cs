@@ -13,21 +13,21 @@ namespace UIAutomationConsole
             {
                 Console.WriteLine("Process Started");
 
-                new Thread(() =>
-                {
-                    Thread.CurrentThread.IsBackground = true;
+                //new Thread(() =>
+                //{
+                //    Thread.CurrentThread.IsBackground = true;
 					
-                var newFolderForTestCommand = "emulator -list-avds";
-                System.Diagnostics.ProcessStartInfo newFolderStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + newFolderForTestCommand);
-                newFolderStartInfo.RedirectStandardOutput = true;
-                newFolderStartInfo.UseShellExecute = false;
-				newFolderStartInfo.WorkingDirectory = "C:\\Program Files (x86)\\Android\\android-sdk\\emulator";
+                var newFolderForTestCommand1 = "emulator -list-avds";
+                System.Diagnostics.ProcessStartInfo newFolderStartInfo1 = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + newFolderForTestCommand1);
+                newFolderStartInfo1.RedirectStandardOutput = true;
+                newFolderStartInfo1.UseShellExecute = false;
+				newFolderStartInfo1.WorkingDirectory = "C:\\Program Files (x86)\\Android\\android-sdk\\emulator";
 
-                Process newFolderProcess = new Process();
-                newFolderProcess.StartInfo = newFolderStartInfo;
-                newFolderProcess.Start();
-                string newFolderResult = newFolderProcess.StandardOutput.ReadToEnd();
-                Console.WriteLine(newFolderResult);
+                Process newFolderProcess1 = new Process();
+                newFolderProcess1.StartInfo = newFolderStartInfo1;
+                newFolderProcess1.Start();
+                string newFolderResult1 = newFolderProcess1.StandardOutput.ReadToEnd();
+                Console.WriteLine(newFolderResult1);
 				
                     Console.WriteLine("Starting the Emulator");
                     var openEmulatorCommand = "emulator -avd pixel_2_r_11_0_-_api_30";
@@ -41,7 +41,7 @@ namespace UIAutomationConsole
                     emulatorProcess.Start();
                     string emulatorResult = emulatorProcess.StandardOutput.ReadToEnd();
                     Console.WriteLine(emulatorResult);
-                }).Start();
+                //}).Start();
 
 
                 var newFolderForSourceCommand = "mkdir D:\\Automation\\Source";
