@@ -16,9 +16,11 @@ namespace UIAutomationConsole
                 //new Thread(() =>
                 //{
                 //    Thread.CurrentThread.IsBackground = true;
-					
+
+                var addEnvironmentMsBuildCommand = "set PATH=%PATH%;C:\\Program Files (x86)\\Android\\android-sdk\\avd\\";
+
                 var newFolderForTestCommand1 = "emulator -list-avds";
-                System.Diagnostics.ProcessStartInfo newFolderStartInfo1 = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + newFolderForTestCommand1);
+                System.Diagnostics.ProcessStartInfo newFolderStartInfo1 = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + addEnvironmentMsBuildCommand + "&" + newFolderForTestCommand1);
                 newFolderStartInfo1.RedirectStandardOutput = true;
                 newFolderStartInfo1.UseShellExecute = false;
 				newFolderStartInfo1.WorkingDirectory = "C:\\Program Files (x86)\\Android\\android-sdk\\emulator\\";
