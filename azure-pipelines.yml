@@ -29,4 +29,4 @@ steps:
 - task: CmdLine@2
   inputs:
     script: 'echo UIAutomationConsole.exe'
-    workingDirectory: '$(Build.SourcesDirectory)\bin\Release\net5.0'
+    workingDirectory: '$(Build.BuildDirectory)\bin\Release\net5.0\'
