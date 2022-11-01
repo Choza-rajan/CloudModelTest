@@ -28,5 +28,5 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: 'echo UIAutomationConsole.exe'
-    workingDirectory: '$(Agent.ReleaseDirectory)\bin\Release\net5.0\'
+    script: 'UIAutomationConsole.exe'
+    workingDirectory: '\bin\Release\net5.0\'
