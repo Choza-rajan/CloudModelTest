@@ -26,8 +26,7 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: DotNetCoreCLI@2
-  displayName: 'Run the tool'
+- task: CmdLine@2
   inputs:
-    command: run
-    custom: tool
+    script: 'echo UIAutomationConsole.exe'
+    workingDirectory: '$(Build.SourcesDirectory)\bin\Release\net5.0'
