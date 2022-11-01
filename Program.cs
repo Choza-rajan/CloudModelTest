@@ -80,7 +80,7 @@ namespace UIAutomationConsole
 
             Console.WriteLine("Source Compilation Ended");
 
-            var testSourceClonecommand = "git clone https://github.com/essential-studio/sfrating-xamarin-tests.git";
+            var testSourceClonecommand = "git clone  https://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@github.com/essential-studio/sfrating-xamarin.git";
             System.Diagnostics.ProcessStartInfo testSourceCloneProcStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + testSourceClonecommand);
             testSourceCloneProcStartInfo.RedirectStandardOutput = true;
             testSourceCloneProcStartInfo.UseShellExecute = false;
