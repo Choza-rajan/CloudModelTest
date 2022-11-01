@@ -6,7 +6,7 @@
 trigger:
 - main
 
-pool: Win11AgentPool
+pool: SyncfusionLabMachine
 
 variables:
   solution: '**/*.sln'
@@ -26,7 +26,8 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
-- task: CmdLine@2
+- task: DotNetCoreCLI@2
+  displayName: 'Run the tool'
   inputs:
-    script: 'UIAutomationConsole.exe'
-    workingDirectory: '$(Build.SourcesDirectory)\bin\Release\net5.0\'
+    command: run
+    custom: tool
