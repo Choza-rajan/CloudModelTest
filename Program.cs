@@ -41,38 +41,20 @@ namespace UIAutomationConsole
             string newFolderResult = newFolderProcess.StandardOutput.ReadToEnd();
             Console.WriteLine(newFolderResult);
 
-            //var sourceClonecommand = "git clone https://github.com/essential-studio/sfrating-xamarin.git";
-            //System.Diagnostics.ProcessStartInfo sourceCloneProcStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + sourceClonecommand);
-            //sourceCloneProcStartInfo.RedirectStandardOutput = true;
-            //sourceCloneProcStartInfo.UseShellExecute = false;
-            //sourceCloneProcStartInfo.WorkingDirectory = "D:\\Automation\\Source";
-
-            //Process sourceCloneProcess = new Process();
-            //sourceCloneProcess.StartInfo = sourceCloneProcStartInfo;
-            //sourceCloneProcess.Start();
-            //string sourceCloneResult = sourceCloneProcess.StandardOutput.ReadToEnd();
-            //Console.WriteLine(sourceCloneResult);
-
             var sourceClonecommand = "git clone https://github.com/essential-studio/sfrating-xamarin.git";
-            ProcessStartInfo processStartInfo = new ProcessStartInfo("C:\\Program Files\\Git\\git-bash.exe", "-c \" " + sourceClonecommand + " \"")
-            {
-                WorkingDirectory = "D:\\Automation\\Source",
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
-                RedirectStandardInput = true,
-                UseShellExecute = false,
-                CreateNoWindow = true
-            };
+            System.Diagnostics.ProcessStartInfo sourceCloneProcStartInfo = new System.Diagnostics.ProcessStartInfo("C:\\Program Files\\Git\\git-bash.exe", "-c \" " + sourceClonecommand + " \"");
+            sourceCloneProcStartInfo.RedirectStandardOutput = true;
+            sourceCloneProcStartInfo.UseShellExecute = false;
+            sourceCloneProcStartInfo.WorkingDirectory = "D:\\Automation\\Source";
 
-            var process = Process.Start(processStartInfo);
-            process.WaitForExit();
-
-            string output = process.StandardOutput.ReadToEnd();
-            string error = process.StandardError.ReadToEnd();
-            var exitCode = process.ExitCode;
-
-            process.Close();
-
+            Process sourceCloneProcess = new Process();
+            sourceCloneProcess.StartInfo = sourceCloneProcStartInfo;
+            sourceCloneProcess.Start();
+            string sourceCloneResult = sourceCloneProcess.StandardOutput.ReadToEnd();
+            Console.WriteLine(sourceCloneResult);
+            string error = sourceCloneProcess.StandardError.ReadToEnd();
+            Console.WriteLine(error);
+          
             var switchBranchCommand = "git switch AutomationDev";
             System.Diagnostics.ProcessStartInfo switchBranchProcStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + switchBranchCommand);
             switchBranchProcStartInfo.RedirectStandardOutput = true;
