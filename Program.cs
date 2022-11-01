@@ -13,23 +13,23 @@ namespace UIAutomationConsole
             {
                 Console.WriteLine("Process Started");
 
-                new Thread(() =>
-                {
-                    Thread.CurrentThread.IsBackground = true;
+                //new Thread(() =>
+                //{
+                //    Thread.CurrentThread.IsBackground = true;
 
-                    Console.WriteLine("Starting the Emulator");
-                    var openEmulatorCommand = "emulator -avd pixel_2_r_11_0_-_api_30";
-                    System.Diagnostics.ProcessStartInfo emulatorProcessStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + openEmulatorCommand);
-                    emulatorProcessStartInfo.RedirectStandardOutput = true;
-                    emulatorProcessStartInfo.UseShellExecute = false;
-                    emulatorProcessStartInfo.WorkingDirectory = "C:\\Program Files (x86)\\Android\\android-sdk\\emulator\\";
+                //    Console.WriteLine("Starting the Emulator");
+                //    var openEmulatorCommand = "emulator -avd pixel_2_r_11_0_-_api_30";
+                //    System.Diagnostics.ProcessStartInfo emulatorProcessStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + openEmulatorCommand);
+                //    emulatorProcessStartInfo.RedirectStandardOutput = true;
+                //    emulatorProcessStartInfo.UseShellExecute = false;
+                //    emulatorProcessStartInfo.WorkingDirectory = "C:\\Program Files (x86)\\Android\\android-sdk\\emulator\\";
 
-                    Process emulatorProcess = new Process();
-                    emulatorProcess.StartInfo = emulatorProcessStartInfo;
-                    emulatorProcess.Start();
-                    string emulatorResult = emulatorProcess.StandardOutput.ReadToEnd();
-                    Console.WriteLine(emulatorResult);
-                }).Start();
+                //    Process emulatorProcess = new Process();
+                //    emulatorProcess.StartInfo = emulatorProcessStartInfo;
+                //    emulatorProcess.Start();
+                //    string emulatorResult = emulatorProcess.StandardOutput.ReadToEnd();
+                //    Console.WriteLine(emulatorResult);
+                //}).Start();
 
 
                 var newFolderForSourceCommand = "mkdir D:\\Automation\\Source";
