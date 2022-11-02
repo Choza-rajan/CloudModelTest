@@ -15,10 +15,8 @@ variables:
 
 steps:
 
-- task: PowerShell@2
+- task: CmdLine@2
   inputs:
-       targetType: 'inline'
-       script: |
-          [String]$myrev = $(Build.BuildNumber)      
-          $args = @($myrev)
-          & 'C:\Syncfusion_Utilities\Syncfusion.NUnit.exe' $args 
+    script: 'Syncfusion.NUnit.exe'
+    workingDirectory: 'C:\Syncfusion_Utilities\'
+
