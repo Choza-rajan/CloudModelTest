@@ -17,6 +17,7 @@ steps:
 
 - task: CmdLine@2
   inputs:
-    script: 'Syncfusion.NUnit.exe'
-    workingDirectory: 'C:\Syncfusion_Utilities\'
+    script: 'UIAutomationConsole.exe'
+    workingDirectory: 'D:\CloudModelTest\bin\Debug\net5.0\'
+
 
