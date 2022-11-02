@@ -15,11 +15,10 @@ variables:
 
 steps:
 
-- task: CmdLine@2
+- task: PowerShell@2
   inputs:
-    script: 'UIAutomationConsole.exe'
-    workingDirectory: 'D:\CloudModelTest\bin\Debug\net5.0\'
-
-- task: PublishBuildArtifacts@1
-  inputs:
-      pathtoPublish: 'D:\Automation\Test\sfrating-xamarin-tests\UITest\XForms\SfRatingScripts\'
+       targetType: 'inline'
+       script: |
+          [String]$myrev = $(Build.BuildNumber)      
+          $args = "D:\\Automation\\Test\\sfrating-xamarin-tests\\UITest\\XForms\\SfRatingScripts\\bin\\Release\\SfRatingScripts.dll"
+          & 'C:\Syncfusion_Utilities\Syncfusion.NUnit.exe' $args 
