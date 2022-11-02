@@ -20,5 +20,5 @@ steps:
        targetType: 'inline'
        script: |
           [String]$myrev = $(Build.BuildNumber)      
-          $args = "D:\\Automation\\Test\\sfrating-xamarin-tests\\UITest\\XForms\\SfRatingScripts\\bin\\Release\\SfRatingScripts.dll"
+          $args = @($myrev)
           & 'C:\Syncfusion_Utilities\Syncfusion.NUnit.exe' $args 
