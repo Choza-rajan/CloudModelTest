@@ -6,6 +6,10 @@
 trigger:
 - main
 
+jobs:
+  - job: XamarinTesting
+    timeoutInMinutes: 0
+
 pool: Win11EmulatorAgent
 
 variables:
@@ -14,10 +18,20 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
+- task: NuGetToolInstaller@1
 
-- task: CmdLine@2
+- task: NuGetCommand@2
   inputs:
-    script: 'UIAutomationConsole.exe'
-    workingDirectory: 'D:\CloudModelTest\bin\Debug\net5.0\'
+    restoreSolution: '$(solution)'
 
+- task: VSBuild@1
+  inputs:
+    solution: '$(solution)'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
 
+- task: DotNetCoreCLI@2
+  displayName: 'Run the tool'
+  inputs:
+    command: run
+    custom: tool
