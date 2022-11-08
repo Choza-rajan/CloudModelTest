@@ -13,7 +13,7 @@ steps:
   inputs:
     filename: 'UIAutomationConsole.exe'
     workingFolder: '$(Build.SourcesDirectory)\net5.0\'
-    arguments: 'sfrating-xamarin AutomationDev sfrating-xamarin-tests With10Automation'
+    arguments: 'sfrating-xamarin AutomationDev sfrating-xamarin-tests With10Automation SfRatingSample SfRatingScripts'
 
 - task: PublishBuildArtifacts@1
   inputs:
