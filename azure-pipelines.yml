@@ -17,4 +17,4 @@ steps:
 
 - task: PublishBuildArtifacts@1
   inputs:
-      pathtoPublish: 'D:\Automation\Test\sfrating-xamarin-tests\UITest\XForms\SfRatingScripts\'
+      pathtoPublish: 'D:\AutomationReports\'
