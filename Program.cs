@@ -44,7 +44,8 @@ namespace UIAutomationConsole
                 string newFolderResult = newFolderProcess.StandardOutput.ReadToEnd();
                 Console.WriteLine(newFolderResult);
 
-                var sourceClonecommand = "git clone https://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@github.com/essential-studio/sfrating-xamarin.git";
+                string sourceClonecommand = "git clone -b" + " " + "AutomationDev" + " " + "https://" + "subashini.mahendran" + ":" + "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" + "@github.com/" + "essential-studio/" + "sfrating-xamarin" + ".git";
+               // var sourceClonecommand = "git clone https://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@github.com/essential-studio/sfrating-xamarin.git";
                 System.Diagnostics.ProcessStartInfo sourceCloneProcStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + sourceClonecommand);
                 sourceCloneProcStartInfo.RedirectStandardOutput = true;
                 sourceCloneProcStartInfo.UseShellExecute = false;
@@ -83,7 +84,8 @@ namespace UIAutomationConsole
 
                 Console.WriteLine("Source Compilation Ended");
 
-                var testSourceClonecommand = "git clone https://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@github.com/essential-studio/sfrating-xamarin-tests.git";
+                string testSourceClonecommand = "git clone -b" + " " + "cloudAutomationTest_Dev" + " " + "https://" + "subashini.mahendran" + ":" + "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" + "@github.com/" + "essential-studio/" + "sfrating-xamarin-tests" + ".git";
+              //var testSourceClonecommand = "git clone https://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@github.com/essential-studio/sfrating-xamarin-tests.git";
                 System.Diagnostics.ProcessStartInfo testSourceCloneProcStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + testSourceClonecommand);
                 testSourceCloneProcStartInfo.RedirectStandardOutput = true;
                 testSourceCloneProcStartInfo.UseShellExecute = false;
