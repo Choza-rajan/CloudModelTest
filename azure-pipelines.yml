@@ -9,10 +9,11 @@ trigger:
 pool: Win11EmulatorAgent
 
 steps:
-- task: CmdLine@2
+- task: CmdLine@1
   inputs:
-    script: 'UIAutomationConsole.exe'
-    workingDirectory: '$(Build.SourcesDirectory)\net5.0\'
+    filename: 'UIAutomationConsole.exe'
+    workingFolder: '$(Build.SourcesDirectory)\net5.0\'
+    arguments: 'sfrating-xamarin AutomationDev sfrating-xamarin-tests With10Automation'
 
 - task: PublishBuildArtifacts@1
   inputs:
