@@ -17,20 +17,21 @@ jobs:
         buildConfiguration: 'Release'
 
         steps:
-          - task: NuGetToolInstaller@1
+          
+            - task: NuGetToolInstaller@1
 
-          - task: NuGetCommand@2
-            inputs:
-              restoreSolution: '$(solution)'
+            - task: NuGetCommand@2
+              inputs:
+                restoreSolution: '$(solution)'
 
-          - task: VSBuild@1
-            inputs:
-              solution: '$(solution)'
-              platform: '$(buildPlatform)'
-              configuration: '$(buildConfiguration)'
+            - task: VSBuild@1
+              inputs:
+                solution: '$(solution)'
+                platform: '$(buildPlatform)'
+                configuration: '$(buildConfiguration)'
 
-          - task: DotNetCoreCLI@2
-            displayName: 'Run the tool'
-            inputs:
-              command: run
-              custom: tool
+            - task: DotNetCoreCLI@2
+              displayName: 'Run the tool'
+              inputs:
+                command: run
+                custom: tool
