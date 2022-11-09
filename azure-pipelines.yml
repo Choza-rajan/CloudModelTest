@@ -10,7 +10,7 @@ jobs:
   - job: Default
     timeoutInMinutes: 0
     pool:
-      name: Win11EmulatorAgent
+      name: XamarinAutomationAgent
 
     steps:
     - task: CmdLine@1
