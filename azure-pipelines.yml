@@ -17,7 +17,7 @@ jobs:
       inputs:
         filename: 'UIAutomationConsole.exe'
         workingFolder: '$(Build.SourcesDirectory)\net5.0\'
-        arguments: 'sftabview-xamarin AutomationDev sftabview-xamarin-tests With10Scripts TabViewSamples TabviewScripts'
+        arguments: 'sftabview-xamarin AutomationDev sftabview-xamarin-tests WithAllScripts TabViewSamples TabviewScripts'
     
 
     - task: PublishBuildArtifacts@1
