@@ -10,7 +10,7 @@ jobs:
   - job: Default
     timeoutInMinutes: 0
     pool:
-      name: XamarinVMSS1
+      name: XamVMSSNov14
 
     steps:
     - task: CmdLine@1
