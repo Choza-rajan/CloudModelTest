@@ -10,7 +10,7 @@ jobs:
   - job: Default
     timeoutInMinutes: 0
     pool:
-      name: XamVMSSNov29
+      name: XamVMSSDec01
 
     steps:
     - task: CmdLine@1
