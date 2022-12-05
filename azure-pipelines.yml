@@ -24,19 +24,3 @@ jobs:
       inputs:
         pathtoPublish: 'D:\AutomationReports\'
   
-  - job: Job2
-    timeoutInMinutes: 0
-    pool:
-      name: XamVMSSDec011
-
-    steps:
-    - task: CmdLine@1
-      inputs:
-        filename: 'UIAutomationConsole.exe'
-        workingFolder: '$(Build.SourcesDirectory)\net5.0\'
-        arguments: 'sfrating-xamarin AutomationDev sfrating-xamarin-tests With10Automation SfRatingSample SfRatingScripts'
-    
-
-    - task: PublishBuildArtifacts@1
-      inputs:
-        pathtoPublish: 'D:\AutomationReports\'
