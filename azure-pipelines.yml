@@ -17,7 +17,7 @@ jobs:
       inputs:
         filename: 'UIAutomationConsole.exe'
         workingFolder: '$(Build.SourcesDirectory)\net5.0\'
-        arguments: 'sfrating-xamarin AutomationDev sfrating-xamarin-tests With10Automation SfRatingSample SfRatingScripts' 
+        arguments: 'sfrating-xamarin AutomationDev sfrating-xamarin-tests SimpleSampleDev SfRatingSample SfRatingScripts' 
     
 
     - task: PublishBuildArtifacts@1
